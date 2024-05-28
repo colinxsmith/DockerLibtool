@@ -1,18 +1,25 @@
+#FROM debian as build
 #FROM ubuntu:24.04 as build
+#docker image rm libtool
+#docker build --no-cache -t libtool .
+#docker run  --rm -it  --name Colin libtool
 # ubuntu has apt package handler
 #RUN apt update
 #RUN apt upgrade -y
-#RUN apt install -y gcc g++ make git zip unzip libtool
+#RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim
 
-#FROM alpine:3.14
+#FROM alpine:3.14 as build
+#docker build --no-cache -t libtool .
 #RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf
 
 
-FROM centos:centos7
+FROM chaman72/centos9 as build
+#docker build --no-cache -t libtool .
+#I ran docker pull dokken/centos-stream-9 to get chaman72/centos9
 ENV container docker
 #centos uses yum
-RUN yum -y update
-RUN yum install  gcc-c++ make git zip unzip libtool patch -y
+RUN yum  update -y
+RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools -y
 
 
 ENV PATH=$PATH:/topper/libsafeqp
@@ -34,7 +41,6 @@ RUN configure --pref=$(pwd)
 RUN make
 RUN (NOW=24/10/2024;./validas libsafeqp/.libs/libsafeqp.so.1.0.0 $(./future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
 RUN (NOW=24/10/2024;./validas libsafeqp/.libs/libsafeqp.a $(./future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
-#RUN make licence
 RUN make install
 RUN (NOW=24/10/2024;./validas lib/libsafeqp.so.1.0.0 $(./future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
 RUN (NOW=24/10/2024;./validas lib/libsafeqp.a $(./future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
