@@ -9,13 +9,13 @@
 #RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim
 
 FROM alpine:3.14 as build
-#docker build --no-cache -t libtool .
+
 RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg
 
 
 #FROM fedora as build
 #FROM chaman72/centos9 as build
-#docker build --no-cache -t libtool .
+
 #I ran docker pull dokken/centos-stream-9 to get chaman72/centos9
 
 #centos and fedora use yum
