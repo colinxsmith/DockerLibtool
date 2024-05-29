@@ -10,7 +10,7 @@
 
 FROM alpine:3.15 as build
 
-RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg
+RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg rpm
 
 
 #FROM fedora as build
