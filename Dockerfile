@@ -8,7 +8,7 @@
 #RUN apt upgrade -y
 #RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim
 
-FROM alpine:3.14 as build
+FROM alpine:3.15 as build
 
 RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg
 
