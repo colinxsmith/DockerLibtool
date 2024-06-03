@@ -1,0 +1,282 @@
+   0 java
+   1 javac
+   2 which SWIG
+   3 which swig
+   4 which javac
+   5 cd safeqp/
+   6 ls make*
+   7 ls
+   8 cd ../../safeqp/
+   9 ls makej*
+  10 make -f makejavacl
+  11 make -f makejavacl SWIG=$(which swig)
+  12 unzip ../backup
+  13 patch < linux64patch 
+  14 make -f makelinux
+  15 constant
+  16 future
+  17 genconst 
+  18 make -f makelinux
+  19 genconst -h 
+  20 genconst -h > constant.h
+  21 genconst  > constant.c
+  22 !mak
+  23 make -f makelinux
+  24 ls /usr/lib/jvm/java-8-openjdk/
+  25 unzip ../backup
+  26 patch -R <int*patch
+  27 ls int*patch
+  28 patch -R < int*patch
+  29 patch -R < interiorpatch 
+  30 patch < linux64patch 
+  31 hostlist
+  32 gcc -o ../bin/hostlist hostlist.c
+  33 hostlist
+  34 make -f makelinux constant.c
+  35 rm constant.*
+  36 make -f makelinux constant.c
+  37 make -f makelinux 
+  38 make -f makelinux SWIG=$(which) JAVA=/usr/lib/jvm/java-8-openjdk/include
+  39 java -version
+  40 make -f makejavacl SWIG=$(which) JAVA=/usr/lib/jvm/java-8-openjdk/include
+  41 java compat
+  42 javac compat.java
+  43 java compat
+  44 export LD_LIBRARY_PATH=$(pwd)
+  45 java compat
+  46 cd
+  47 mkdir SWIG
+  48 cd SWIG
+  49 git clone https://github.com/swig/swig.git SWIG
+  50 cd SWIG
+  51 git branch
+  52 ./autogen.sh 
+  53 ./configure --prefix=$(pwd)
+  54 Tools/pcre-build.sh  --help
+  55 Tools/pcre-build.sh  
+  56 wget https://www.pcre.org
+  57 rm index.html 
+  58 pwd
+  59 make
+  60 ./configure --prefix=$(pwd)
+  61 ./configure --prefix=$(pwd) --without-pcre
+  62 make
+  63 apk add bison
+  64 make
+  65 make install
+  66 cd ../../
+  67 pwd
+  68 ls
+  69 cd
+  70 pwd
+  71 cd /topper
+  72 ls /root/SWIG/
+  73 ls /root/SWIG/SWIG/
+  74 rm -rf /root/SWIG
+  75 pwd
+  76 ls
+  77 mkdir SWIG
+  78 ls
+  79 cd SWIG/
+  80 !git
+  81 git clone https://github.com/swig/swig.git SWIG
+  82 cd SWIG
+  83 ./autogen.sh 
+  84 ./configure --prefix=$(pwd) --without-pcre
+  85 make
+  86 ]
+  87 make install
+  88 cd ../../safeqp/
+  89 make -f makejavacl SWIG=/topper/SWIG/SWIG JAVA=/usr/lib/jvm/java-8-openjdk/include clean
+  90 make -f makejavacl SWIG=/topper/SWIG/SWIG JAVA=/usr/lib/jvm/java-8-openjdk/include 
+  91 make -f makejavacl SWIG=/topper/SWIG/SWIG/bin JAVA=/usr/lib/jvm/java-8-openjdk/include 
+  92 tree /topper/SWIG
+  93 ls /topper/SWIG/
+  94 ls /topper/SWIG/SWIG
+  95 ls -l /topper/SWIG/SWIG
+  96 ls -l /topper/SWIG/SWIG/swig
+  97  /topper/SWIG/SWIG/swig
+  98 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-8-openjdk/include 
+  99 unzip ../backup *.java
+ 100 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-8-openjdk/include 
+ 101 java compat
+ 102 javac compat.java
+ 103 java compat
+ 104 ls *.class
+ 105 history > history
+    0 /topper/SWIG/SWIG/swig
+   1 cd safeqp/
+   2 hostlist
+   3 cd ../safeqp/
+   4 cd ../../safeqp/
+   5 patch < linux64patch 
+   6 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-8-openjdk/include
+   7 make -f makelinux constant.c
+   8 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-8-openjdk/include
+   9 make -f makelinux 
+  10 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-8-openjdk/include
+  11 java compat
+  12 javac compat.java 
+  13 java compat
+  14 export LD_LIBRARY_PATH=$(pwd)
+  15 java compat
+  16 apk add openjdk21
+  17 apk add openjdk20
+  18 apk add openjdk19
+  19 apk add openjdk18
+  20 apk add openjdk17
+  21 java -version
+  22 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-17-openjdk/include
+  23 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-17-openjdk/include clean
+  24 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig JAVA=/usr/lib/jvm/java-17-openjdk/include
+  25 java compat
+  26 javac compat.java 
+  27 java compat
+  28 cd ../libsafeqp/
+  29 history > history2
+
+   0 cat getsource.sh 
+   1 vi Makefile.am 
+   2 ls
+   3 ls safeqp
+   4 grep ETL *
+   5 vi Makefile.am 
+   6 grep safeqp *
+   7 vi Makefile.am 
+   8 vi safeqp/Makefile.am 
+   9 vi conic/Makefile.am 
+  10 vi safeqp/Makefile.am 
+  11 vi safejava/Makefile.am 
+  12 vi configure.ac 
+  13 vi Makefile.am 
+  14 make
+  15 ls safejava/
+  16 safejava/safejava
+  17 vi ../safeqp/makejavacl
+  18 cd safejava/
+  19 /topper/SWIG/SWIG/swig -version
+  20  sed  "s/libraryname/safejava/" /topper/safeqp/safe.i
+  21  sed  "s/libraryname/safejava/" /topper/safeqp/safe.i > safejava.i
+  22 grep safejava safejava.i 
+  23 /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava_wrap.cpp
+  24 /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava_wrap.cpp safejava.i 
+  25 ls
+  26 vi Makefile.am 
+  27 make
+  28 vi Makefile.am 
+  29 make
+  30 vi Makefile.am 
+  31 make
+  32 cd ../../safeqp/
+  33 make -f makelinux constan.c
+  34 make -f makelinux constant.c
+  35 cd ../libsafeqp/safejava/
+  36 cd ..
+  37 make
+  38 cd ../safeqp/
+  39 make -f makejavacl SWIG=/topper/SWIG/SWIG/swig
+  40 cd ../libsafeqp/
+  41 cp ../safeqp/safejava_wrap.cpp safejava
+  42 make
+  43 vi safeqp/Makefile.am 
+  44 vi libsafeqp/Makefile.am 
+  45 vi safeqp/Makefile.am 
+  46 make
+  47 !v
+  48 vi safeqp/Makefile.am 
+  49 make
+  50 vi libsafeqp/Makefile.am 
+  51 vi safejava/Makefile.am 
+  52 git diff
+  53 git checkout -- safeqp/Makefile.am
+  54 vi safejava/Makefile.am 
+  55 vi libsafeqp/Makefile.am 
+  56 vi safejava/Makefile.am 
+  57 vi libsafeqp/Makefile.am 
+  58 vi safejava/Makefile.am 
+  59 vi libsafeqp/Makefile.am 
+  60 vi safejava/Makefile.am 
+  61 make
+  62 !v
+  63 vi safejava/Makefile.am 
+  64 vi libsafeqp/Makefile.am 
+  65 vi safejava/Makefile.am 
+  66 make
+  67 vi safejava/Makefile.am 
+  68 ls /usr/lib/jvm/java-21-openjdk/include/
+  69 vi safejava/Makefile.am 
+  70 make
+  71 vi safejava/Makefile.am 
+  72 make
+  73 vi safeqp/Makefile.am
+  74 vi Makefile.am 
+  75 vi configure.ac 
+  76 vi safeqp/Makefile.am
+  77 vi libsafeqp/Makefile.am
+  78 vi safejava/Makefile.am 
+  79 make
+  80 !v
+  81 vi safejava/Makefile.am 
+  82 make
+  83 vi safejava/Makefile.am 
+  84 make
+  85 ls safejava/
+  86 ls libsafeqp/
+  87 vi Makefile.am 
+  88 tree safejava
+  89 ls
+  90 make install
+  91 tree safejava
+  92 ls -a safejava/
+  93 ls -a safejava/.libs/
+  94 tree
+  95 ls
+  96 ls testU
+  97 cd testU
+  98 ls
+  99 vi Makefile.am 
+ 100 cd 
+ 101 cd /topper/libsafeqp/
+ 102 mkdir testsafejava
+ 103 cd testsafejava/
+ 104 cp ../../safeqp/compat.java .
+ 105 cp ../safejava/safejava.java 
+ 106 cp ../safejava/safejava.java .
+ 107 ls
+ 108 javac *
+ 109 cp ../safejava/safejavaJNI.java  .
+ 110 javac *
+ 111 ls
+ 112 rm *.class
+ 113 javac *
+ 114 javac *.java
+ 115 ls
+ 116 javac compat.java 
+ 117 ls
+ 118 java compat
+ 119 javac -cp . compat.java 
+ 120 man javac
+ 121 javac -cp
+ 122 javac -cp ./ compat.java 
+ 123 javac *.java
+ 124 javac -cp . *.java
+ 125 ls
+ 126 vi safejava.java 
+ 127 ls
+ 128 cd ..
+ 129 ls
+ 130 ls safejava/
+ 131 cd testsafejava/
+ 132 cp ../safejava/*.java .
+ 133 javac *.java
+ 134 java compat
+ 135 export LD_LIBRARY_PATH=
+ 136 ls ..
+ 137 ls ../lib
+ 138 export LD_LIBRARY_PATH=/topper/lib
+ 139 java compat
+ 140 ls /topper/lib
+ 141 ls /topper/libsafeqp/lib
+ 142 export LD_LIBRARY_PATH=/topper/libsafeqp/lib
+ 143 java compat
+ 144 history > history2
