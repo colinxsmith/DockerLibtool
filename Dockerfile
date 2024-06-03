@@ -45,6 +45,7 @@ RUN gcc -O2 ../safeqp/validas.c ../safeqp/krypton.c ../safeqp/guniqid.c -o ../bi
 RUN gcc -O2 ../safeqp/future.c ../safeqp/krypton.c  -o ../bin/future
 RUN sed "s/libraryname/safejava/" ../safeqp/safe.i > safejava/safejava.i
 RUN /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava/safejava_wrap.cpp safejava/safe.i
+RUN sed -i "/ReleaseStr/d" safejava/safejava_wrap.cpp
 RUN getsource.sh && autogen.sh && configure --pref=$(pwd)
 RUN make
 RUN (NOW=24/10/2024;validas libsafeqp/.libs/libsafeqp.so.1.0.0 $(future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
