@@ -6,11 +6,11 @@
 # ubuntu has apt package handler
 #RUN apt update
 #RUN apt upgrade -y
-#RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim
+#RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim bison openjdk21
 
 FROM alpine as build
 
-RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg rpm bison openjdk21
+RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21
 
 
 #FROM fedora as build
@@ -20,7 +20,7 @@ RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg
 
 #centos and fedora use yum
 #RUN yum  update -y
-#RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools tree -y
+#RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison openjdk21 -y
 
 
 ENV container docker
