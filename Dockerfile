@@ -43,6 +43,7 @@ WORKDIR /topper/libsafeqp
 RUN gcc -O2 ../safeqp/genconst.c -lm  -o ../bin/genconst
 RUN gcc -O2 ../safeqp/validas.c ../safeqp/krypton.c ../safeqp/guniqid.c -o ../bin/validas
 RUN gcc -O2 ../safeqp/future.c ../safeqp/krypton.c  -o ../bin/future
+RUN mkdir safejava
 RUN sed "s/libraryname/safejava/" ../safeqp/safe.i > safejava/safejava.i
 RUN /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava/safejava_wrap.cpp safejava/safe.i
 RUN sed -i "/ReleaseStr/d" safejava/safejava_wrap.cpp
