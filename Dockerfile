@@ -24,6 +24,7 @@ RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg
 
 
 ENV container docker
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 WORKDIR /topper
 RUN mkdir SWIG bin
 WORKDIR /topper/SWIG
