@@ -43,7 +43,8 @@ WORKDIR /topper/libsafeqp
 RUN gcc -O2 ../safeqp/genconst.c -lm  -o ../bin/genconst
 RUN gcc -O2 ../safeqp/validas.c ../safeqp/krypton.c ../safeqp/guniqid.c -o ../bin/validas
 RUN gcc -O2 ../safeqp/future.c ../safeqp/krypton.c  -o ../bin/future
-RUN /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava/safejava_wrap.cpp /topper/safeqp/safe.i
+RUN sed "s/libraryname/safejava/" ../safeqp/safe.i > safejava/safejava.i
+RUN /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava/safejava_wrap.cpp safejava/safe.i
 RUN getsource.sh && autogen.sh && configure --pref=$(pwd)
 RUN make
 RUN (NOW=24/10/2024;validas libsafeqp/.libs/libsafeqp.so.1.0.0 $(future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
