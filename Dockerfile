@@ -1,16 +1,16 @@
 #FROM debian as build
-#FROM ubuntu:24.04 as build
+FROM ubuntu:24.04 as build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
 #docker run  --rm -it  --name Colin libtool
 # ubuntu has apt package handler
-#RUN apt update
-#RUN apt upgrade -y
-#RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim bison openjdk21
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim bison openjdk-21-jdk
 
-FROM alpine as build
+#FROM alpine as build
 
-RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21
+#RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21
 
 
 #FROM fedora as build
@@ -20,15 +20,20 @@ RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg
 
 #centos and fedora use yum
 #RUN yum  update -y
-#RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison openjdk21 -y
-
+#RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison wget  -y
 
 ENV container docker
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+#RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
+#RUN dnf install jdk-21.0.1_linux-x64_bin.rpm -y
+#ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+#ENV JAVA_HOME=/usr/lib/jvm/jdk-21-oracle-x64
+
 WORKDIR /topper
 RUN mkdir SWIG bin
 WORKDIR /topper/SWIG
 RUN git clone https://github.com/swig/swig.git SWIG
+
 WORKDIR /topper/SWIG/SWIG
 RUN ./autogen.sh && ./configure --prefix=$(pwd) --without-pcre
 RUN make && make install
@@ -45,8 +50,8 @@ RUN gcc -O2 ../safeqp/validas.c ../safeqp/krypton.c ../safeqp/guniqid.c -o ../bi
 RUN gcc -O2 ../safeqp/future.c ../safeqp/krypton.c  -o ../bin/future
 
 RUN sed "s/libraryname/safejava/" ../safeqp/safe.i > safejava/safejava.i
-RUN /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava/safejava_wrap.cpp safejava/safe.i
-RUN sed -i "/ReleaseStr/d" safejava/safejava_wrap.cpp
+RUN /topper/SWIG/SWIG/swig -java -c++ -module safejava -o safejava/safejava_wrap.cpp safejava/safejava.i
+#RUN sed -i "/ReleaseStringUTFChars(,/d" safejava/safejava_wrap.cpp
 RUN getsource.sh && autogen.sh && configure --pref=$(pwd)
 RUN make
 RUN (NOW=24/10/2024;validas libsafeqp/.libs/libsafeqp.so.1.0.0 $(future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
