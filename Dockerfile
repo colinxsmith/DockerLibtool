@@ -34,6 +34,7 @@ ENV JAVA_HOME=/usr/lib/jvm/jdk-21-oracle-x64
 #ENV JAVA_HOME=/usr/lib/jvm/jdk-21-oracle-x64
 
 WORKDIR /topper
+ENV TOPPER=/topper
 RUN mkdir SWIG bin
 WORKDIR /topper/SWIG
 RUN git clone https://github.com/swig/swig.git SWIG
