@@ -1,13 +1,16 @@
-#FROM debian as build
-FROM ubuntu:24.04 as build
+FROM debian as build
+#FROM ubuntu:24.04 as build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
 #docker run  --rm -it  --name Colin libtool
 # ubuntu has apt package handler
 RUN apt update
 RUN apt upgrade -y
-RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim bison openjdk-21-jdk
+#RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim bison openjdk-21-jdk
+RUN apt install -y gcc g++ make git zip unzip libtool rpm tree vim bison wget
 
+RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+RUN dpkg -i jdk-21_linux-x64_bin.deb
 #FROM alpine as build
 
 #RUN apk add gcc g++ make git zip unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21
@@ -26,7 +29,8 @@ ENV container docker
 #RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
 #RUN dnf install jdk-21.0.1_linux-x64_bin.rpm -y
 #ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+#ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/jdk-21-oracle-x64
 #ENV JAVA_HOME=/usr/lib/jvm/jdk-21-oracle-x64
 
 WORKDIR /topper
