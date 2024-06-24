@@ -11,30 +11,31 @@
 #debian#####################################
 #RUN apt install -y python3-dev mono-mcs mono-devel
 #RUN ln -s /usr/bin/python3 /usr/bin/python
+#RUN apt install -y libpcre2-dev 
 #RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
 #RUN dpkg -i jdk-21_linux-x64_bin.deb
 #########################################
-#FROM alpine:edge as build
+FROM alpine:edge as build
 
-#RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev perl-dev
+RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev perl-dev
 
-#RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    #apk add --no-cache --virtual=.build-dependencies ca-certificates && \
-    #cert-sync /etc/ssl/certs/ca-certificates.crt && \
-    #apk del .build-dependencies
+RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+    apk add --no-cache --virtual=.build-dependencies ca-certificates && \
+    cert-sync /etc/ssl/certs/ca-certificates.crt && \
+    apk del .build-dependencies
 
 #FROM fedora as build
-FROM chaman72/centos9 as build
+#FROM chaman72/centos9 as build
 
 #I ran docker pull chaman72/centos9 to get chaman72/centos9
 
 #centos and fedora use yum
-RUN yum  update -y
-RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison wget -y
-RUN yum install  pcre2 pcre2-devel -y
-RUN yum install  python3-devel -y
-RUN ln -s /usr/bin/python3 /usr/bin/python
-RUN yum install mono-devel  perl-devel  -y
+#RUN yum  update -y
+#RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison wget -y
+#RUN yum install  pcre2 pcre2-devel -y
+#RUN yum install  python3-devel -y
+#RUN ln -s /usr/bin/python3 /usr/bin/python
+#RUN yum install mono-devel  perl-devel  -y
 #RUN yum install perl-CPAN -y
 #RUN cpan i CPAN && cpan reload CPAN
 #RUN cpan i re::engine::PCRE2
@@ -48,8 +49,8 @@ ENV container docker
 
 
 
-RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
-RUN dnf install jdk-21.0.1_linux-x64_bin.rpm -y
+#RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
+#RUN dnf install jdk-21.0.1_linux-x64_bin.rpm -y
 
 WORKDIR /topper
 RUN mkdir bin
