@@ -1,28 +1,30 @@
-#FROM debian as build
+FROM debian as build
 #FROM ubuntu:24.04 as build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
 #docker run  --rm -it  --name Colin libtool
 # ubuntu has apt package handler
-#RUN apt update
-#RUN apt upgrade -y
-#RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison pcre2 pcre2-dev
-#RUN apt install -y  openjdk-21-jdk python-dev-is-python3 mono-mcs mono-devel
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison
+RUN apt install -y libpcre2-dev
+#RUN apt install -y  openjdk-21-jdk
+#RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
 #debian#####################################
-#RUN apt install -y python3-dev mono-mcs mono-devel
+RUN apt install -y python3-dev mono-mcs mono-devel
 #RUN ln -s /usr/bin/python3 /usr/bin/python
 #RUN apt install -y libpcre2-dev 
-#RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-#RUN dpkg -i jdk-21_linux-x64_bin.deb
+RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+RUN dpkg -i jdk-21_linux-x64_bin.deb
 #########################################
-FROM alpine:edge as build
+#FROM alpine:edge as build
 
-RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev perl-dev
+#RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev perl-dev
 
-RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    apk add --no-cache --virtual=.build-dependencies ca-certificates && \
-    cert-sync /etc/ssl/certs/ca-certificates.crt && \
-    apk del .build-dependencies
+#RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+#   apk add --no-cache --virtual=.build-dependencies ca-certificates && \
+#   cert-sync /etc/ssl/certs/ca-certificates.crt && \
+#   apk del .build-dependencies
 
 #FROM fedora as build
 #FROM chaman72/centos9 as build
@@ -72,7 +74,7 @@ WORKDIR /topper
 RUN git clone https://github.com/colinxsmith/libsafeqp
 WORKDIR /topper/libsafeqp
 #Only on Alpine
-RUN sed -i "s/amd/musl-linux-amd/" DEBIAN/control
+#RUN sed -i "s/amd/musl-linux-amd/" DEBIAN/control
 RUN gcc -O2 ../safeqp/genconst.c -lm  -o ../bin/genconst
 RUN gcc -O2 ../safeqp/validas.c ../safeqp/krypton.c ../safeqp/guniqid.c -o ../bin/validas
 RUN gcc -O2 ../safeqp/future.c ../safeqp/krypton.c  -o ../bin/future
