@@ -71,7 +71,8 @@ RUN unzip ../backup && patch < linux64patch
 WORKDIR /topper
 RUN git clone https://github.com/colinxsmith/libsafeqp
 WORKDIR /topper/libsafeqp
-#RUN sed -i "s/amd/musl-linux-amd/" DEBIAN/control
+#Only on Alpine
+RUN sed -i "s/amd/musl-linux-amd/" DEBIAN/control
 RUN gcc -O2 ../safeqp/genconst.c -lm  -o ../bin/genconst
 RUN gcc -O2 ../safeqp/validas.c ../safeqp/krypton.c ../safeqp/guniqid.c -o ../bin/validas
 RUN gcc -O2 ../safeqp/future.c ../safeqp/krypton.c  -o ../bin/future
