@@ -1,15 +1,16 @@
 #FROM debian as build
 #FROM ubuntu:24.04 as build
+FROM linuxmintd/mint22-amd64 as build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
 #docker run  --rm -it  --name Colin libtool
 # ubuntu has apt package handler
-#RUN apt update
-#RUN apt upgrade -y
-#RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison
-#RUN apt install -y libpcre2-dev
-#RUN apt install -y  openjdk-21-jdk
-#RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison
+RUN apt install -y libpcre2-dev
+RUN apt install -y  openjdk-21-jdk
+RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
 #debian#####################################
 #RUN apt install -y python3-dev mono-mcs mono-devel
 #RUN ln -s /usr/bin/python3 /usr/bin/python
@@ -26,18 +27,18 @@
 #   cert-sync /etc/ssl/certs/ca-certificates.crt && \
 #   apk del .build-dependencies
 
-FROM fedora as build
+#FROM fedora as build
 #FROM chaman72/centos9 as build
 
 #I ran docker pull chaman72/centos9 to get chaman72/centos9
 
 #centos and fedora use yum
-RUN yum  update -y
-RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison wget -y
-RUN yum install  pcre2 pcre2-devel -y
-RUN yum install  python3-devel -y
-RUN ln -s /usr/bin/python3 /usr/bin/python
-RUN yum install mono-devel  perl-devel  -y
+#RUN yum  update -y
+#RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison wget -y
+#RUN yum install  pcre2 pcre2-devel -y
+#RUN yum install  python3-devel -y
+#RUN ln -s /usr/bin/python3 /usr/bin/python
+#RUN yum install mono-devel  perl-devel  -y
 #RUN yum install perl-CPAN -y
 #RUN cpan i CPAN && cpan reload CPAN
 #RUN cpan i re::engine::PCRE2
@@ -45,8 +46,8 @@ RUN yum install mono-devel  perl-devel  -y
 
 
 
-RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
-RUN yum install jdk-21.0.1_linux-x64_bin.rpm -y
+#RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
+#RUN yum install jdk-21.0.1_linux-x64_bin.rpm -y
 ENV container docker
 
 
