@@ -1,10 +1,11 @@
-FROM ubuntu as build
+#FROM ubuntu as build
+FROM linuxmintd/mint22-amd64 as build
 #RUN yum update -y
-RUN apt update && apt upgrade
+RUN apt update -y && apt upgrade -y
 RUN apt install -y alien
 WORKDIR /top
 COPY libsafeqp-1-0.x86_64.rpm /top
 COPY logopt.log /top
 #RUN yum install -y libsafeqp-1-0.x86_64.rpm
-RUN alien -i libsafeqp-1-0.x86_64.rpm
+RUN alien -i -c libsafeqp-1-0.x86_64.rpm
 RUN ldconfig /usr/local/lib
