@@ -1,6 +1,6 @@
-#FROM ubuntu as build
-#FROM chaman72/centos9 as build
-FROM linuxmintd/mint22-amd64 as build
+#FROM ubuntu AS build
+#FROM chaman72/centos9 AS build
+FROM linuxmintd/mint22-amd64 AS build
 #RUN yum update -y
 RUN apt update -y && apt upgrade -y
 RUN apt install -y alien
