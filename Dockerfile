@@ -1,6 +1,7 @@
 #FROM debian as build
 #FROM ubuntu:24.04 as build
-FROM linuxmintd/mint22-amd64 as build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
+#FROM linuxmintd/mint22-amd64 as build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
 #docker run  --rm -it  --name Colin libtool
