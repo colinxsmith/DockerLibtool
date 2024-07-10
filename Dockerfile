@@ -1,7 +1,7 @@
-#FROM debian as build
-#FROM ubuntu:24.04 as build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
-#FROM linuxmintd/mint22-amd64 as build
+#FROM debian AS build
+#FROM ubuntu:24.04 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+#FROM linuxmintd/mint22-amd64 AS build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
 #docker run  --rm -it  --name Colin libtool
@@ -10,16 +10,17 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison
 RUN apt install -y libpcre2-dev
-RUN apt install -y  openjdk-21-jdk
+#RUN apt install -y  openjdk-21-jdk
 RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
 #debian#####################################
 #RUN apt install -y python3-dev mono-mcs mono-devel
 #RUN ln -s /usr/bin/python3 /usr/bin/python
 #RUN apt install -y libpcre2-dev 
-#RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-#RUN dpkg -i jdk-21_linux-x64_bin.deb
+RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+RUN dpkg -i jdk-21_linux-x64_bin.deb
+RUN apt install -y patch
 #########################################
-#FROM alpine:edge as build
+#FROM alpine:edge AS build
 
 #RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev perl-dev
 
@@ -28,8 +29,8 @@ RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
 #   cert-sync /etc/ssl/certs/ca-certificates.crt && \
 #   apk del .build-dependencies
 
-#FROM fedora as build
-#FROM chaman72/centos9 as build
+#FROM fedora AS build
+#FROM chaman72/centos9 AS build
 
 #I ran docker pull chaman72/centos9 to get chaman72/centos9
 
@@ -49,7 +50,7 @@ RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
 
 #RUN wget https://download.oracle.com/java/21/archive/jdk-21.0.1_linux-x64_bin.rpm
 #RUN yum install jdk-21.0.1_linux-x64_bin.rpm -y
-ENV container docker
+ENV container=docker
 
 
 
