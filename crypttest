@@ -5,6 +5,7 @@ WORKDIR /topper
 RUN useradd -m -N -s /bin/bash -u 1000 -p 'daTCY4fUO4vQo' colin && usermod -aG sudo colin
 RUN chown colin /topper
 USER colin
+#get encrypted password by perl -c "print crypt('password','salt code')"
 RUN git clone https://github.com/colinxsmith/libsafeqp
 WORKDIR /topper/libsafeqp
 RUN git config --global credential.helper store && git pull
