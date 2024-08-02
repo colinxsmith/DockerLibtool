@@ -94,6 +94,8 @@ RUN (NOW=24/10/2024;validas lib/libsafeqp.a $(future -b 13101D54 $(date +%d/%m/%
 
 #RUN make dotdeb
 #RUN make rpm
+RUN git config --global user.email colinxsmith@gmail.com
+RUN git config --global user.name Colin 
 RUN git config --global credential.helper store && git pull
 #RUN apt install sudo
 #RUN useradd -m -N -s /bin/bash -u 1000 -p 'biR9RL/wHdLAo' colin && usermod -aG sudo colin
