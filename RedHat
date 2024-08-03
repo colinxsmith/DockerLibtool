@@ -6,6 +6,7 @@ RUN yum update -y
 WORKDIR /top
 COPY libsafeqp-1-0.x86_64.rpm /top
 COPY logopt.log /top
+COPY licence_base_n /root/.safeqp2.so
 RUN yum install -y libsafeqp-1-0.x86_64.rpm
 RUN ldconfig /usr/local/lib
 RUN logopt logopt.log
