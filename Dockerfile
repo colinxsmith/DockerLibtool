@@ -72,7 +72,7 @@ ENV TOPPER=/topper
 COPY backup.zip /topper/
 RUN mkdir safeqp
 WORKDIR /topper/safeqp
-RUN unzip ../backup && patch < linux64patch
+RUN unzip ../backup && patch < linux64patch && patch -R < interiorpatch
 WORKDIR /topper
 RUN git clone https://github.com/colinxsmith/libsafeqp
 WORKDIR /topper/libsafeqp
