@@ -9,4 +9,6 @@ COPY libsafeqp-1-0.x86_64.rpm /top
 COPY logopt.log /top
 #RUN yum install -y libsafeqp-1-0.x86_64.rpm
 RUN alien -i -c libsafeqp-1-0.x86_64.rpm
-#RUN ldconfig /usr/local/lib
+RUN ldconfig /usr/local/lib
+COPY licence_base_n /root/.safeqp2.so
+RUN logopt logopt.log
