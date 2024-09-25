@@ -1,6 +1,6 @@
 #FROM debian AS build
-#FROM ubuntu:24.04 AS build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM ubuntu:latest AS build
+#FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 #FROM linuxmintd/mint22-amd64 AS build
 #docker image rm libtool
 #docker build --no-cache -t libtool .
@@ -97,6 +97,7 @@ RUN (NOW=24/10/2024;validas lib/libsafeqp.a $(future -b 13101D54 $(date +%d/%m/%
 RUN git config --global user.email colinxsmith@gmail.com
 RUN git config --global user.name Colin 
 RUN git config --global credential.helper store && git pull
+RUN git config --global core.editor "vim"
 #RUN apt install sudo
 #RUN useradd -m -N -s /bin/bash -u 1000 -p 'biR9RL/wHdLAo' colin && usermod -aG sudo colin
 #USER colin
