@@ -11,9 +11,9 @@ RUN apt upgrade -y
 RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison
 RUN apt install -y libpcre2-dev
 #RUN apt install -y  openjdk-21-jdk
-RUN apt install -y python-dev-is-python3 mono-mcs mono-devel
+RUN apt install -y python-dev-is-python3 mono-mcs mono-devel 2to3
 #debian#####################################
-#RUN apt install -y python3-dev mono-mcs mono-devel
+#RUN apt install -y python3-dev mono-mcs mono-devel 2to3
 #RUN ln -s /usr/bin/python3 /usr/bin/python
 #RUN apt install -y libpcre2-dev 
 RUN wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
@@ -22,7 +22,7 @@ RUN apt install -y patch
 #########################################
 #FROM alpine:edge AS build
 
-#RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev perl-dev
+#RUN apk add gcc g++ make git zip bash unzip patch libtool automake autoconf tree dpkg rpm vim bison openjdk21 pcre2 pcre2-dev  python3-dev 2to3 perl-dev
 
 #RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
 #   apk add --no-cache --virtual=.build-dependencies ca-certificates && \
@@ -38,7 +38,7 @@ RUN apt install -y patch
 #RUN yum  update -y
 #RUN yum install  gcc-c++ make git zip unzip libtool patch vim rpmdevtools vim tree bison wget -y
 #RUN yum install  pcre2 pcre2-devel -y
-#RUN yum install  python3-devel -y
+#RUN yum install  python3-devel 2to3 -y
 #RUN ln -s /usr/bin/python3 /usr/bin/python
 #RUN yum install mono-devel  perl-devel  -y
 #RUN yum install perl-CPAN -y
