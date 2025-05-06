@@ -1,5 +1,5 @@
 #FROM debian AS build
-FROM ubuntu:latest AS build
+FROM ubuntu:25.04 AS build
 #FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 #FROM linuxmintd/mint22-amd64 AS build
 #docker image rm libtool
@@ -11,7 +11,7 @@ RUN apt upgrade -y
 RUN apt install -y gcc g++ make git wget zip unzip libtool rpm tree vim bison
 RUN apt install -y libpcre2-dev
 #RUN apt install -y  openjdk-21-jdk
-RUN apt install -y python-dev-is-python3 mono-mcs mono-devel 2to3
+RUN apt install -y python-dev-is-python3 mono-mcs mono-devel 
 #debian#####################################
 #RUN apt install -y python3-dev mono-mcs mono-devel 2to3
 #RUN ln -s /usr/bin/python3 /usr/bin/python
