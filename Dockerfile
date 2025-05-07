@@ -89,7 +89,7 @@ RUN (NOW=24/10/2024;validas libsafeqp/.libs/libsafeqp.a $(future -b 13101D54 $(d
 RUN make install
 RUN (NOW=24/10/2024;validas lib/libsafeqp.so.1.0.0 $(future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
 RUN (NOW=24/10/2024;validas lib/libsafeqp.a $(future -b 13101D54 $(date +%d/%m/%Y) $NOW) 1023)
-#RUN make licence
+#RUN make licence 
 #RUN mkdir ~/rpmbuild
 
 #RUN make dotdeb
@@ -98,6 +98,7 @@ RUN git config --global user.email colinxsmith@gmail.com
 RUN git config --global user.name Colin 
 RUN git config --global credential.helper store && git pull
 RUN git config --global core.editor "vim"
+COPY optimiser_issue.log /topper/libsafeqp
 #RUN apt install sudo
 #RUN useradd -m -N -s /bin/bash -u 1000 -p 'biR9RL/wHdLAo' colin && usermod -aG sudo colin
 #USER colin
