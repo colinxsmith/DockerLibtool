@@ -1,5 +1,5 @@
-#FROM debian AS build
-FROM ubuntu:25.04 AS build
+FROM debian:12.10 AS build
+#FROM ubuntu:25.04 AS build
 #FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 #FROM linuxmintd/mint22-amd64 AS build
 #docker image rm libtool
@@ -99,6 +99,7 @@ RUN git config --global user.name Colin
 RUN git config --global credential.helper store && git pull
 RUN git config --global core.editor "vim"
 COPY optimiser_issue.log /topper/libsafeqp
-#RUN apt install sudo
-#RUN useradd -m -N -s /bin/bash -u 1000 -p 'biR9RL/wHdLAo' colin && usermod -aG sudo colin
-#USER colin
+RUN apt install sudo
+RUN useradd -m -N -s /bin/bash -u 1000 -p 'biR9RL/wHdLAo' colin && usermod -aG sudo colin
+RUN chown -R colin /topper/libsafeqp
+USER colin
